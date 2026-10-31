@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vietnam Health Map</title>
+<meta name="description" content="MapLibre GL WebGIS demo: 2,500+ hospitals and clinics in Vietnam from OpenStreetMap with clustering, heatmap, filters, search and a nearest-facility tool.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%23e11d48%27/%3E%3Cpath fill=%27%23fff%27 d=%27M13 7h6v6h6v6h-6v6h-6v-6H7v-6h6z%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+</head>
+<body>
+<div id="map"></div>
+
+<aside id="panel">
+  <header>
+    <div class="brand"><span class="dot"></span>MapLibre GL · WebGIS</div>
+    <h1>Vietnam Health Map</h1>
+    <p class="sub"><b id="total">0</b> hospitals and clinics from OpenStreetMap. Click anywhere on the map to find the nearest facilities.</p>
+    <button id="collapse" class="icon-btn" aria-label="Toggle panel">▾</button>
+  </header>
+  <div class="body">
+    <section>
+      <input id="search" type="search" placeholder="Search by name, e.g. Bạch Mai" autocomplete="off">
+      <ul id="results"></ul>
+    </section>
+    <section>
+      <label class="lbl">View</label>
+      <div class="seg" id="view">
+        <button data-v="clusters" class="on">Clusters</button>
+        <button data-v="heat">Heatmap</button>
+        <button data-v="points">Points</button>
+      </div>
+    </section>
+    <section>
+      <label class="lbl">Show</label>
+      <div class="checks">
+        <label><input type="checkbox" id="f-hospital" checked><i class="sw h"></i>Hospitals <span id="c-hospital"></span></label>
+        <label><input type="checkbox" id="f-clinic" checked><i class="sw c"></i>Clinics <span id="c-clinic"></span></label>
+        <label><input type="checkbox" id="f-emergency"><i class="sw e"></i>Emergency only <span id="c-emergency"></span></label>
+      </div>
+    </section>
+    <section>
+      <label class="lbl">In current view</label>
+      <div class="kpis">
+        <div><b id="v-h">0</b><span>hospitals</span></div>
+        <div><b id="v-c">0</b><span>clinics</span></div>
+        <div><b id="v-share">0%</b><span>of all facilities</span></div>
+      </div>
+    </section>
+    <section>
+      <label class="lbl">Nearest facilities <span class="muted" id="near-hint">click the map</span></label>
+      <ol id="nearest"></ol>
+    </section>
+  </div>
+</aside>
+
+<div id="credit">Data © OpenStreetMap contributors (ODbL) · Basemap OpenFreeMap · built by Thang Dao</div>
+<script src="main.js"></script>
+</body>
+</html>
